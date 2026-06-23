@@ -452,14 +452,16 @@
 
       /* ---- audio ---- */
       let audioCtx = null;
-      function getCtx() {
+
+      async function getCtx() {
         if (!audioCtx)
           audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === "suspended") audioCtx.resume();
+        if (audioCtx.state === "suspended") await audioCtx.resume();
         return audioCtx;
       }
-      function playTone(freq, startTime, duration, gainPeak) {
-        const ctx = getCtx();
+
+      async function playTone(freq, startTime, duration, gainPeak) {
+        const ctx = await getCtx();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "triangle";
@@ -632,7 +634,7 @@
 
         const trySpeak = () => {
           const voices = window.speechSynthesis.getVoices();
-          const preferred = voices.find((v) => v.name === "Daniel");
+          const preferred = voices.find((v) => v.name === "karen");
           if (preferred) utterance.voice = preferred;
           window.speechSynthesis.speak(utterance);
         };
