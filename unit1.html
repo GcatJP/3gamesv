@@ -419,9 +419,6 @@
         <div class="hud">
           <a class="reset-btn" href="index.html">⬅️ Back</a>
           <button class="reset-btn" id="resetBtn">Play Again 🦜</button>
-          <button class="reset-btn" id="voiceBtn" onclick="toggleVoice()">
-            🔊 Voice
-          </button>
         </div>
       </div>
 
@@ -562,7 +559,7 @@
 
         el.classList.add("flipped");
         flippedCards.push({ el, card });
-        speak(card.type === "image" ? PAIRS[card.pairId].word : card.value);
+
         if (flippedCards.length === 2) {
           tries++;
 
@@ -622,24 +619,6 @@
       }
       let voiceOn = true;
 
-      function speak(text) {
-        if (!voiceOn) return;
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "en-GB";
-        utterance.rate = 0.9;
-        utterance.pitch = 1.1;
-        const voices = window.speechSynthesis.getVoices();
-        const preferred = voices.find((v) => v.name === "karen");
-        if (preferred) utterance.voice = preferred;
-        window.speechSynthesis.speak(utterance);
-      }
-
-      function toggleVoice() {
-        voiceOn = !voiceOn;
-        document.getElementById("voiceBtn").textContent = voiceOn
-          ? "🔊 Voice"
-          : "🔇 Voice";
-      }
       function newGame() {
         matches = 0;
         tries = 0;
