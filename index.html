@@ -308,6 +308,43 @@
         }
       }
 
+      @media (orientation: landscape) and (max-width: 926px) {
+        .wrap,
+        .overlay {
+          display: none;
+        }
+        .rotate-msg {
+          display: flex;
+        }
+      }
+
+      @media (orientation: portrait) {
+        .rotate-msg {
+          display: none;
+        }
+      }
+
+      .rotate-msg {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(180deg, #f4b23e 0%, #e47d31 60%);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 100;
+      }
+
+      .rotate-msg p {
+        font-family: "Chalkboard SE", "Comic Sans MS", cursive;
+        font-size: clamp(18px, 4vw, 28px);
+        color: var(--white);
+        -webkit-text-stroke: 1px var(--ocean-deep);
+        text-align: center;
+        padding: 0 20px;
+      }
+
       /* win overlay — uses normal flow so it has height */
       .overlay {
         display: none;
