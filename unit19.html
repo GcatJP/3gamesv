@@ -414,14 +414,14 @@
     <script>
       /* ---- PAIRS — replace with your real image paths / words ---- */
       const PAIRS = [
-        { word: "Are you hot?", word: "Yes, I am." },
-        { word: "Is she cold?", word: "Yes, she is." },
-          { word: "Is is a fish?", word: "Yes, it is." },
-            { word: "Are they birds?", word: "Yes, they are." },
-              { word: "Is he Kevin?", word: "Yes, he is." },
-                { word: "Yes,", word: "it is." },
-                  { word: "No,", word: "it isn't." },
-
+        { word: "Are you hot?", word2: "Yes, I am." },
+        { word: "Is she cold?", word2: "Yes, she is." },
+        { word: "Is it a fish?", word2: "Yes, it is." },
+        { word: "Are they birds?", word2: "Yes, they are." },
+        { word: "Is he Kevin?", word2: "Yes, he is." },
+        { word: "Yes,", word2: "it is." },
+        { word: "No,", word2: "it isn't." },
+      ];
       /* ---- audio ---- */
       let audioCtx = null;
       function getCtx() {
@@ -474,8 +474,8 @@
       function buildDeck() {
         let cards = [];
         PAIRS.forEach((p, idx) => {
-          cards.push({ pairId: idx, type: "image", value: p.img });
           cards.push({ pairId: idx, type: "word", value: p.word });
+          cards.push({ pairId: idx, type: "word", value: p.word2 });
         });
         for (let i = cards.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
@@ -592,7 +592,6 @@
         document.getElementById("overlay").classList.add("show");
         playWinFanfare();
       }
-      let voiceOn = true;
 
       function newGame() {
         matches = 0;
