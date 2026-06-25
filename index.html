@@ -204,6 +204,27 @@
         text-align: center;
         padding: 0 20px;
       }
+      .title-icon {
+        position: absolute;
+        top: 50%;
+        height: clamp(30px, 7vw, 100px);
+        width: auto;
+        transform: translateY(-50%);
+      }
+
+      .title-icon-left {
+        right: 100%;
+        margin-right: 10px;
+      }
+
+      .title-icon-right {
+        left: 100%;
+        margin-left: 10px;
+      }
+      .title-wrap {
+        position: relative;
+        display: inline-block;
+      }
 
       @media (orientation: landscape) and (max-width: 926px) {
         .wrap,
@@ -233,7 +254,15 @@
 
     <div class="wrap">
       <div class="header">
-        <h1>Adventure Island 3 Games</h1>
+        <div class="title-wrap">
+          <img src="images/sh1.png" class="title-icon title-icon-left" alt="" />
+          <h1>Adventure Island 3</h1>
+          <img
+            src="images/kh1.png"
+            class="title-icon title-icon-right"
+            alt=""
+          />
+        </div>
       </div>
 
       <div class="grid" id="grid"></div>
